@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Loaded Plugin for jQuery</title>
+  </head>
+  <body>
+hoohahaha
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+  <script src="../lib/method_ready.js" type="text/javascript"></script>
+  <script type="text/javascript">
+
+  function embedFlash(id, src){
+
+    var clsid = 'clsid:D27CDB6E-AE6D-11cf-96B8-444553540000';
+
+    var html = (typeof ActiveXObject === 'undefined')
+    ? '<object id="'+id+'" width="1" height="1" type="application/x-shockwave-flash" data="'+src+'">' +
+      '<param name="allowscriptaccess" value="always" />' +
+      '</object>'
+    : '<object id="'+id+'" width="1" height="1" type="application/x-shockwave-flash" classid="'+clsid+'" data="'+src+'">' +
+      '<param name="allowscriptaccess" value="always" />' +
+      '<param name="movie" value="'+src+'" />' +
+      '</object>';
+
+    document.write(html);
+  }
+
+  embedFlash('audio', 'audio.swf');
+
+
+  //console.info($('#audio')[0].setVolume);
+  $('#audio').methodReady('setVolume', function() {
+    this.setVolume(4);
+  });
+
+    console.info('OH BPLIZZLE');
+
+  </script>
+  </body>
+</html>
